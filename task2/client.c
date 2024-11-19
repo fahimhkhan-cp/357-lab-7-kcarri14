@@ -32,9 +32,19 @@ void send_request(int fd)
    size_t size;
    ssize_t num;
 
+   char buffer[1024];
+   ssize_t line_from_server;
+   
    while ((num = getline(&line, &size, stdin)) >= 0)
    {
       write(fd, line, num);
+
+      line_from_server = read(fd, buffer, sizeof(buffer)-1);
+
+      if(line_from_server > 0){
+         buffer[line_from_server] = '\0';
+         printf("Echo from Server: %s", buffer);
+      }
    }
 
    free(line);

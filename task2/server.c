@@ -22,7 +22,8 @@ void handle_request(int nfd)
 
    while ((num = getline(&line, &size, network)) >= 0)
    {
-      printf("%s", line);
+      printf("Message: %s", line);
+      write(nfd, line, num);
    }
 
    free(line);
