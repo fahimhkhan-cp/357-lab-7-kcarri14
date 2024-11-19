@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 int main(int argc, char* argv[]){
 
@@ -71,5 +72,5 @@ int main(int argc, char* argv[]){
 
     waitpid(pid1, NULL, 0);
     waitpid(pid2, NULL, 0);
-    
+   
 }
